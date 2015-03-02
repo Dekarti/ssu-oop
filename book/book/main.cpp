@@ -4,9 +4,14 @@
 using namespace std;
 
 int main() {
-	Book book("Title1", "Author1", "Publisher1", 2001, 100);
+	Book book;
 	BookList bookList;
-	bookList.add(book);
+	for (int i = 0; i < 15; i++) {
+		book = Book("Title", "Author1", "Publisher1", i + 2000, i + 100);
+		bookList.add(book);
+	}
+
+	bookList[7].update("olololol", "title");
 	bookList.print();
 	return 0;
 }
