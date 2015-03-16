@@ -22,13 +22,17 @@ public:
 	int    getPages()     { return pages; }
 
 	void setTitle(string title)         { this->title = title; }
-	void setAuthor(string author)       { this->author = author;; }
-	void setPublisher(string publisher) { this->publisher = publisher;; }
+	void setAuthor(string author)       { this->author = author; }
+	void setPublisher(string publisher) { this->publisher = publisher; }
 	void setYear(int year)              { this->year = year; }
 	void setPages(int pages)            { this->pages = pages; }
 
-	template< typename T >
-	void update(T obj, string type);
+	void updateTitle(string title);
+	void updateAuthor(string author); 
+	void updatePublisher(string publisher);
+	void updateYear(int year); 
+	void updatePages(int pages);
+
 private:
 	string title;
 	string author;
@@ -59,16 +63,22 @@ void Book::print() {
 		 << " | " << endl;
 }
 
-/*template< typename T >
-void Book::update(T obj, string type) {
-		if (type == "title")
-			title = obj;
-		if (type == "author")
-			author = obj;
-		if (type == "publisher")
-			publisher = obj;
-		if (type == "year")
-			year = obj;
-		if (type == "pages")
-			pages = obj;
-}*/
+void Book::updateTitle(string title) {
+	this->title = title;
+}
+
+void Book::updateAuthor(string author) {
+	this->author = author;
+}
+
+void Book::updatePublisher(string publisher) {
+	this->publisher = publisher;
+}
+
+void Book::updateYear(int year) {
+	this->year = year;
+}
+
+void Book::updatePages(int pages) {
+	this->pages = pages;
+}
