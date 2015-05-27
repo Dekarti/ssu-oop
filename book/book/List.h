@@ -8,7 +8,7 @@ using namespace std;
 class BookList {
 public:
 	BookList() {}
-	void add(Book);
+	void add(Book*);
 	void add(string title,
 		     string author,
 		     string publisher,
@@ -16,11 +16,12 @@ public:
 		     int pages);
 	void remove(Book);
 	void print();
+	Book* operator[](int i);
 private:
-	vector<Book> books;
+	vector<Book*> books;
 };
 
-void BookList::add(Book book) {
+void BookList::add(Book* book) {
 	books.push_back(book);
 }
 
@@ -29,7 +30,7 @@ void BookList::add(string title,
 				   string publisher,
 				   int year,
 				   int pages) {
-	Book book(title, author, publisher, year, pages);
+	Book* book = new Book(title, author, publisher, year, pages);
 	books.push_back(book);
 }
 
@@ -38,20 +39,17 @@ void BookList::print() {
 		 << " | " << setw(15) << "Title"
 		 << " | " << setw(15) << "Author"
 		 << " | " << setw(15) << "Publisher"
-		 << " | " << setw(15) << "Year"
-		 << " | " << setw(15) << "Pages"
-		 << " | " << endl << " ";
-	for (int i = 0; i < 91; i++) {
-		if ((i % 18) != 0)
-			cout << "-";
-		else
-			cout << "|";
-	}
-	cout << endl;
+		 << " | " << setw(7)  << "Year"
+		 << " | " << setw(7)  << "Pages"
+		 << " | " << endl;
+
 	for (int i = 0; i < books.size(); i++) {
-		books[i].print();
+		books[i]->print();
 	}
 }
 
+Book* BookList::operator[](int i) {
+	return books[i];
+}
 
 
